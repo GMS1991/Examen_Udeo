@@ -1,0 +1,209 @@
+body{
+    margin: 0;
+    font-family: Raleway, sans-serif;
+}
+
+
+header{
+    display: grid;
+    grid-area: hdr;
+    grid-gap: 10px;
+
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "log nlg"
+    ;
+}
+
+.logo{
+    grid-area: log;
+    background-color: blue;
+}
+
+.nombre-logo{
+    grid-area: nlg;
+    display: flex;
+    font-size: 32px;
+    font-weight: bold;
+    justify-content: left; /* horizontalmente */
+    align-items: center; /* verticalmente */
+}
+
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+nav ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* los elementos flexibles se distribuyen en multiples lineas */
+    justify-content: right;
+}
+nav ul li {
+    margin: 0 15px; 
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+nav ul li a:hover {
+    color: #ff6347;
+}
+
+
+section{
+    grid-area: sec;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+form{
+    display: grid;
+    padding: 25px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "dpe dac";
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: ridge;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.datos-personales{
+    display: grid;
+    grid-area: dpe;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "dp1 dp2"
+    ;
+    
+}
+
+.datospersonales-uno{
+    grid-area: dp1;
+    margin: 25px;
+}
+
+.datospersonales-dos{
+    grid-area: dp2;
+    margin-top: 80px;
+}
+
+.datos-academicos{
+    grid-area: dac;
+    margin : 25px;
+}
+
+div label{
+    display: block;
+    margin: 10px 0px;
+}
+
+div input{
+    width: 100%;
+    border-radius: 5px;
+    height: 20px;
+}
+
+div select{
+    width: 100%;
+    border-radius: 5px;
+    height: 25px;
+
+}
+
+.guardar-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.guardar-button:hover {
+    background-color: #45a049; 
+    transform: scale(1.05); 
+}
+
+.guardar-button:active {
+    background-color: #3e8e41; 
+}
+
+
+@media (max-width: 600px) {
+
+    
+header{
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "log"
+    ;
+}
+
+    .nombre-logo{
+        display: none;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    form{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+
+        grid-template-areas: 
+            "dpe" 
+            "dac"
+        ;
+    }
+    .datospersonales-dos{
+
+        margin-top: 0;
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+
+    .datos-personales{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+            "dp1"
+            "dp2"
+        ;
+
+    }
+}
+
+
+
+
+
+
+
+
+

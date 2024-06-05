@@ -1,34 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inscripcion</title>
+    <link rel="stylesheet" href="./styles/inscripcion.css">
 </head>
+
 <body>
 
-    <header>
-        INSCRIPCIONES UDEO
+    <header class="header">
+        <div class="Logo">
+            <img src="udeo.png" alt="Logo" class="logo-img" style="width: 256px; height: 128px;">
+        </div>
+        <div class="nombre-logo">
+            <label>UNIVERSIDAD DE OCCIDENTE</label>
+        </div>
     </header>
 
+
+    <nav>
+        <ul>
+            <li><a href="">LOGIN</a></li>
+        </ul>
+    </nav>
+
     <section>
-        
+
         <form action="">
+            <div class="datos-personales">
+
+                <div class="datospersonales-uno">
+                    <h2>Datos Personales</h2>
+
+                    <label for="cui">CUI</label>
+                    <input type="number" id="cui" name="cui">
+
+                    <label for="nombres">Nombres</label>
+                    <input type="text" id="nombres" name="nombres">
+
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos">
+
+                    <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
+
+                </div>
+
+                <div class="datospersonales-dos">
+
+                    <label for="pais">País</label>
+                    <select name="pais" id="pais">
+                        <option value="range">Selecciona un país</option>
+                    </select>
+
+                    <label for="depa">Departamento</label>
+                    <select name="depa" id="depa">
+                        <option value="range">Selecciona un departamento</option>
+                    </select>
+
+                    <label for="muni">Municipio</label>
+                    <select name="muni" id="muni">
+                        <option value="range">Selecciona un municipio</option>
+                    </select>
+
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion">
+                </div>
+
+            </div>
+
+
+            <div class="datos-academicos">
+                <h2>Datos Académicos</h2>
+                <label for="diver">Diversificado</label>
+                <select name="diver" id="diver">
+                    <option value="range">Selecciona una opción</option>
+                </select>
+
+                <label for="carrera">Carreras</label>
+                <select name="carrera" id="carrera">
+                    <option value="range">Selecciona una carrera</option>
+                </select>
+
+                <label for="jornada">Jornada</label>
+                <select name="jornada" id="jornada">
+                    <option value="range">Selecciona una jornada</option>
+                </select>
+
+                <button type="submit" class="guardar-button">Guardar</button>
+            </div>
 
 
         </form>
 
     </section>
 
-    <nav>
-
-    </nav>
 
     <footer>
 
     </footer>
 
 
-    
+
 </body>
+
 </html>

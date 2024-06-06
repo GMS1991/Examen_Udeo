@@ -6,6 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscripcion</title>
     <link rel="stylesheet" href="./styles/inscripcion.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#pais').change(function() {
+                var countryId = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get_data.php',
+                    data: { action: 'getDepartments', countryId: countryId },
+                    success: function(response) {
+                        $('#depa').html(response);
+                        $('#muni').html('<option value="">Selecciona un municipio</option>');
+                    }
+                });
+            });
+
+            $('#depa').change(function() {
+                var departmentId = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: 'get_data.php',
+                    data: { action: 'getMunicipalities', departmentId: departmentId },
+                    success: function(response) {
+                        $('#muni').html(response);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
 </head>
 
 <body>
@@ -36,36 +75,37 @@
                     <h2>Datos Personales</h2>
 
                     <label for="cui">CUI</label>
-                    <input type="number" id="cui" name="cui">
+                    <input type="number" id="cui" name="cui" required>
 
                     <label for="nombres">Nombres</label>
-                    <input type="text" id="nombres" name="nombres">
+                    <input type="text" id="nombres" name="nombres" required>
 
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" id="apellidos" name="apellidos">
+                    <input type="text" id="apellidos" name="apellidos" required>
 
                     <label for="fecha_nacimiento">Fecha Nacimiento</label>
-                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono">
+                    <input type="tel" id="telefono" name="telefono" required>
 
                 </div>
 
                 <div class="datospersonales-dos">
 
                     <label for="pais">País</label>
-                    <select name="pais" id="pais">
+                    <select name="pais" id="pais" required>
                         <option value="range">Selecciona un país</option>
                     </select>
 
                     <label for="depa">Departamento</label>
-                    <select name="depa" id="depa">
-                        <option value="range">Selecciona un departamento</option>
+                    <select name="depa" id="depa" required>
+                        <option value="">Selecciona un departamento</option>
+                        <?php echo getPaises(); ?>
                     </select>
 
                     <label for="muni">Municipio</label>
-                    <select name="muni" id="muni">
+                    <select name="muni" id="muni" required>
                         <option value="range">Selecciona un municipio</option>
                     </select>
 
@@ -79,17 +119,17 @@
             <div class="datos-academicos">
                 <h2>Datos Académicos</h2>
                 <label for="diver">Diversificado</label>
-                <select name="diver" id="diver">
+                <select name="diver" id="diver" required>
                     <option value="range">Selecciona una opción</option>
                 </select>
 
                 <label for="carrera">Carreras</label>
-                <select name="carrera" id="carrera">
+                <select name="carrera" id="carrera required>
                     <option value="range">Selecciona una carrera</option>
                 </select>
 
                 <label for="jornada">Jornada</label>
-                <select name="jornada" id="jornada">
+                <select name="jornada" id="jornada" required>
                     <option value="range">Selecciona una jornada</option>
                 </select>
 

@@ -1,21 +1,18 @@
 <?php
 class BD {
-    private $serverName = "DESKTOP-H50TBC6\\SQLGWMS"; // Nota la doble barra invertida
-    private $database = "UDEO";
-    private $username = "sa";
-    private $password = "Gerson@1991";
+    private $host = "localhost";
+    private $dbname = "UDEO";
+    private $username = "root";
+    private $password = "";
     private $conn;
 
     public function __construct() {
-        $dsn = "sqlsrv:Server=$this->serverName;Database=$this->database";
+        $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=utf8";
         try {
             $this->conn = new PDO($dsn, $this->username, $this->password);
-            // Establecer el modo de error de PDO a excepción
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conexión establecida.<br />";
         } catch (PDOException $e) {
-            echo "Conexión fallida: " . $e->getMessage() . "<br />";
-            die();
+            die("Conexión fallida: " . $e->getMessage());
         }
     }
 
@@ -33,6 +30,3 @@ class BD {
         }
     }
 }
-
-// Para usar la clase y probar la conexión
-$db = new BD();

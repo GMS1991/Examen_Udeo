@@ -11,11 +11,21 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
+            // Cargar países al inicio
+            $.ajax({
+                type: 'POST',
+                url: 'lista_section.php',
+                data: { action: 'getCountries' },
+                success: function(response) {
+                    $('#pais').html(response);
+                }
+            });
+
             $('#pais').change(function() {
                 var countryId = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'get_data.php',
+                    url: 'lista_section.php',
                     data: { action: 'getDepartments', countryId: countryId },
                     success: function(response) {
                         $('#depa').html(response);
@@ -28,7 +38,7 @@
                 var departmentId = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'get_data.php',
+                    url: 'lista_section.php',
                     data: { action: 'getMunicipalities', departmentId: departmentId },
                     success: function(response) {
                         $('#muni').html(response);
@@ -37,9 +47,6 @@
             });
         });
     </script>
-
-
-
 
 
 

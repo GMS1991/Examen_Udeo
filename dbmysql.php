@@ -1,7 +1,7 @@
 <?php
 class BD {
     private $host = "localhost";
-    private $dbname = "UDEO";
+    private $dbname = "udeo";
     private $username = "root";
     private $password = "";
     private $conn;
@@ -11,6 +11,7 @@ class BD {
         try {
             $this->conn = new PDO($dsn, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo"CONECTADO";
         } catch (PDOException $e) {
             die("Conexión fallida: " . $e->getMessage());
         }
@@ -30,3 +31,5 @@ class BD {
         }
     }
 }
+
+$con = new BD();

@@ -10,44 +10,33 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Cargar países al inicio
-            $.ajax({
-                type: 'POST',
-                url: 'lista_section.php',
-                data: { action: 'getCountries' },
-                success: function(response) {
-                    $('#pais').html(response);
-                }
-            });
-
-            $('#pais').change(function() {
-                var countryId = $(this).val();
+        $(document).ready(function () {
+            $('#pais').change(function () {
+                var pais_id = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'lista_section.php',
-                    data: { action: 'getDepartments', countryId: countryId },
-                    success: function(response) {
-                        $('#depa').html(response);
-                        $('#muni').html('<option value="">Selecciona un municipio</option>');
+                    url: 'components/departamentos.php',
+                    data: { pais_id: pais_id },
+                    success: function (response) {
+                        $('#departamento').html(response);
+                        $('#municipio').html('<option value="">Selecciona un municipio</option>');
                     }
                 });
             });
 
-            $('#depa').change(function() {
-                var departmentId = $(this).val();
+            $('#departamento').change(function () {
+                var departamento_id = $(this).val();
                 $.ajax({
                     type: 'POST',
-                    url: 'lista_section.php',
-                    data: { action: 'getMunicipalities', departmentId: departmentId },
-                    success: function(response) {
-                        $('#muni').html(response);
+                    url: 'components/municipios.php',
+                    data: { departamento_id: departamento_id },
+                    success: function (response) {
+                        $('#municipio').html(response);
                     }
                 });
             });
         });
     </script>
-
 
 
 
@@ -58,7 +47,7 @@
 
     <header class="header">
         <div class="Logo">
-            <img src="img/udeo.png"Logo" class="logo-img" style="width: 256px; height: 128px;">
+            <img src="img/udeo.png" Logo" class="logo-img" style="width: 256px; height: 128px;">
         </div>
         <div class="nombre-logo">
             <label>UNIVERSIDAD DE OCCIDENTE</label>
@@ -100,20 +89,21 @@
 
                 <div class="datospersonales-dos">
 
+
                     <label for="pais">País</label>
                     <select name="pais" id="pais" required>
-                        <option value="range">Selecciona un país</option>
+                        <?php include 'components/paises.php'; ?>
                     </select>
 
-                    <label for="depa">Departamento</label>
-                    <select name="depa" id="depa" required>
+
+                    <label for="departamento">Departamento</label>
+                    <select name="departamento" id="departamento" required>
                         <option value="">Selecciona un departamento</option>
-                        <?php echo getPaises(); ?>
                     </select>
 
-                    <label for="muni">Municipio</label>
-                    <select name="muni" id="muni" required>
-                        <option value="range">Selecciona un municipio</option>
+                    <label for="municipio">Municipio</label>
+                    <select name="municipio" id="municipio" required>
+                        <option value="">Selecciona un municipio</option>
                     </select>
 
                     <label for="direccion">Dirección</label>
@@ -132,7 +122,7 @@
 
                 <label for="carrera">Carreras</label>
                 <select name="carrera" id="carrera required>
-                    <option value="range">Selecciona una carrera</option>
+                    <option value=" range">Selecciona una carrera</option>
                 </select>
 
                 <label for="jornada">Jornada</label>

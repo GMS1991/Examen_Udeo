@@ -1,15 +1,15 @@
 <?php
-require_once 'db.php';
+require_once 'dbmysql.php';
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
 
     if ($action == 'getDepartments') {
         $countryId = $_POST['countryId'];
-        echo getDepartments($countryId);
+        echo getDepartamentos($countryId);
     } elseif ($action == 'getMunicipalities') {
         $departmentId = $_POST['departmentId'];
-        echo getMunicipalities($departmentId);
+        echo getMunicipios($departmentId);
     }
 }
 
@@ -28,12 +28,17 @@ function getOptions($query, $param) {
     return $options;
 }
 
-function getDepartments($countryId) {
+function getPaises(){
+    $query ="SELECT  ID AS value, PAIS AS text FROM PAIS";
+    return getOptions($query);
+}
+
+function getDepartamentos($countryId) {
     $query = "SELECT ID AS value, DEPARTAMENTO AS text FROM DEPARTAMENTO WHERE PAIS_ID = ?";
     return getOptions($query, $countryId);
 }
 
-function getMunicipalities($departmentId) {
+function getMunicipios($departmentId) {
     $query = "SELECT ID AS value, MUNICIPIO AS text FROM MUNICIPIO WHERE DEPARTAMENTO_ID = ?";
     return getOptions($query, $departmentId);
 }

@@ -16,20 +16,6 @@ function getOptions($consulta) {
     return $options;
 }
 
-// function getPaises() {
-//     $query = "SELECT ID AS value, PAIS AS text FROM PAIS";
-//     return getOptions($query);
-// }
-
-// function getDepartamentos() {
-//     $query = "SELECT ID AS value, DEPARTAMENTO AS text FROM DEPARTAMENTO";
-//     return getOptions($query);
-// }
-
-// function getMunicipios() {
-//     $query = "SELECT ID AS value, MUNICIPIO AS text FROM MUNICIPIO";
-//     return getOptions($query);
-// }
 
 function getCarreras() {
     $query = "SELECT ID AS value, LICENCIATURA AS text FROM LICENCIATURA";
